@@ -32,13 +32,19 @@ st.header("Movie Recommendation system")
 
 list_of_movies = movies['title'].values
 selected_movie = st.selectbox(
-'choose movies',
+'',
 list_of_movies
+)
+st.markdown(
+    f'<p style="font-size: 24px; font-weight: bold; color: #ff9900;">🎬 Select a Movie </p>',
+    unsafe_allow_html=True
+)
+st.markdown(
+    f'<p style="font-size: 16px; font-style: italic;">Recommendations like : {selected_movie}</p>',unsafe_allow_html=True
 )
 if st.button('recommend'):
     movie_name = recommend(selected_movie)
-    st.text(movie_name[0])
-    st.text(movie_name[1])
-    st.text(movie_name[2])
-    st.text(movie_name[3])
-    st.text(movie_name[4])
+    for name in movie_name:
+        st.markdown(f'<div style="border: 2px solid #ff9900; padding: 10px; border-radius: 5px; margin:2px;">{name}</div>', unsafe_allow_html=True)
+
+
